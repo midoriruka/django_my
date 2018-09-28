@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
-
 # Create your views here.
-
+user_list=[]
 
 def index(request):
-    return render(request,'myweb.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username, password)
+        temp={'user':username,'pw':password}
+        user_list.append(temp)
+    return render(request, 'index.html',[)
 
